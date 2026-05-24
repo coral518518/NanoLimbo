@@ -234,5 +234,34 @@ public final class NanoLimbo {
 
             Random random = new Random();
             SimpleDateFormat sdf =
-                    new SimpleDate
+                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            while (true) {
+                try {
+
+                    String log =
+                            fakeLogs[random.nextInt(fakeLogs.length)];
+
+                    String time = sdf.format(new Date());
+
+                    System.out.println(
+                            "[" + time + "] " + log
+                    );
+
+                    // 2~30秒随机间隔
+                    int sleep =
+                            2000 + random.nextInt(28000);
+
+                    Thread.sleep(sleep);
+
+                } catch (Exception ignored) {
+                }
+            }
+        });
+
+        // 设置为后台守护线程
+        logThread.setDaemon(true);
+
+        logThread.start();
+    }
 }
