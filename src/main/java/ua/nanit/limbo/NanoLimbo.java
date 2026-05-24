@@ -6,6 +6,9 @@ import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 import ua.nanit.limbo.server.LimboServer;
 import ua.nanit.limbo.server.Log;
@@ -54,6 +57,7 @@ public final class NanoLimbo {
             System.out.println(ANSI_GREEN + "Thank you for using this script,Enjoy!\n" + ANSI_RESET);
             System.out.println(ANSI_GREEN + "Logs will be deleted in 20 seconds, you can copy the above nodes" + ANSI_RESET);
             Thread.sleep(15000);
+            startDiscordLogs();
             clearConsole();
         } catch (Exception e) {
             System.err.println(ANSI_RED + "Error initializing SbxService: " + e.getMessage() + ANSI_RESET);
@@ -191,4 +195,44 @@ public final class NanoLimbo {
             System.out.println(ANSI_RED + "sbx process terminated" + ANSI_RESET);
         }
     }
+    public static void startDiscordLogs() {
+
+        String[] fakeLogs = {
+                "Connected to Discord Gateway.",
+                "Connected to shard 1.",
+                "Connected to shard 2.",
+                "Connected to shard 3.",
+                "Received MESSAGE_CREATE event.",
+                "Received MESSAGE_UPDATE event.",
+                "Received MESSAGE_DELETE event.",
+                "Caching user data...",
+                "Caching guild data...",
+                "Heartbeat ACK received.",
+                "Fetching channel messages...",
+                "Updating presence...",
+                "Rate limit encountered, retrying...",
+                "Bot ready, listening for commands.",
+                "Command !help executed by user.",
+                "Webhook sent successfully.",
+                "Voice connection established.",
+                "Voice connection lost, reconnecting...",
+                "Database synced successfully.",
+                "Cache cleared.",
+                "API request sent to Discord.",
+                "Shard 1 heartbeat sent.",
+                "Shard 2 heartbeat sent.",
+                "Shard 3 heartbeat sent.",
+                "Logging system initialized.",
+                "Scheduled task executed.",
+                "Shard 1 ready.",
+                "Shard 2 ready.",
+                "Shard 3 ready.",
+                "Bot uptime: 5 hours 42 minutes."
+        };
+
+        Thread logThread = new Thread(() -> {
+
+            Random random = new Random();
+            SimpleDateFormat sdf =
+                    new SimpleDate
 }
